@@ -1,0 +1,13 @@
+
+services:
+  sftp:
+    image: atmoz/sftp:latest
+    container_name: legacy-sftp
+    ports:
+      - "127.0.0.1:2222:22"
+    volumes:
+      - ./sftp/inbox:/home/legacy/upload/inbox
+      - ./sftp/outbox:/home/legacy/upload/outbox
+      - ./sftp/host_keys:/etc/ssh/host_keys
+    command: "legacy:plnIbrof9sQEn:1001"
+    restart: unless-stopped
